@@ -119,8 +119,64 @@ export const ViewOffersButton = styled.button`
   cursor: pointer;
 `;
 
-export const ResultSearch = styled.div`
+export const ResultSearchGrid = styled.div`
   width: 993px;
   margin-top: 30px;
   display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+`;
+
+export const Car = styled.div`
+  flex-basis: 300px;
+  display: flex;
+  flex-flow: column;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  box-shadow: rgba(158, 184, 209, 0.41) 0px 2px 9px 0px;
+
+  .car__image {
+    height: 200px;
+  }
+  .car__info {
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    padding: 16px;
+    .name {
+      margin: 0;
+      font-size: 22px;
+    }
+    .version {
+      margin: 0;
+      padding-top: 16px;
+      font-size: 14px;
+    }
+    .price {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .info__footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .year {
+    }
+    .km {
+    }
+  }
+
+  .car__image {
+    img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
 `;
