@@ -7,6 +7,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
 export const CenterContent = styled.div`
@@ -96,9 +97,13 @@ export const FilterBar = styled.form`
   select {
     width: 230px;
     height: 36px;
-    text-overflow: ""; 
+    text-overflow: "";
     text-indent: 0.01px;
     margin: 10px 5px;
+
+    &.versions {
+      width: 300px;
+    }
   }
 `;
 
@@ -111,4 +116,11 @@ export const ViewOffersButton = styled.button`
   border-radius: 5px;
   width: 200px;
   height: 36px;
+  cursor: pointer;
+`;
+
+export const ResultSearch = styled.div`
+  width: 993px;
+  margin-top: 30px;
+  display: flex;
 `;
