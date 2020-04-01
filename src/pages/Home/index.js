@@ -41,7 +41,6 @@ export default class Home extends Component {
 
   handleButtonSubmit = event => {
     event.preventDefault();
-    alert("clicou");
   };
 
   render() {
