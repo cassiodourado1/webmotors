@@ -5,6 +5,10 @@ export const HeaderContent = styled.div`
   margin: 0 auto;
   padding:1rem;
   background: #f4f4f4;
+  @media (max-width: 768px) {
+    width: unset;
+    max-width: 100%;
+  }
 `;
 
 
@@ -14,4 +18,8 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex; 
   align-items: center;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;

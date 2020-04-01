@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Header from "../../components/Header";
+import Loading from "../../components/Loading";
+import api from "../../api";
 import {
   Content,
   CenterContent,
@@ -8,50 +11,103 @@ import {
   FilterBar,
   ViewOffersButton,
   ResultSearchGrid,
-  Car
+  Car,
+  Pagination
 } from "./styles";
-import Header from "../../components/Header";
-import api from "../../api";
 
 export default class Home extends Component {
   state = {
-    make: [],
+    makes: [],
     models: [],
     versions: [],
     allVehicles: [],
     year: [],
-    price: []
+    price: [],
+    atualPage: 1,
+    isLoading: false
   };
 
+  async componentDidMount() {
+    this.setState({ isLoading: true });
+    const response = await api.get(`/Make`);
+    this.setState({
+      makes: response.data,
+      isLoading: false
+    });
+  }
+
   handleMarkChange = async event => {
+    this.setState({ isLoading: true });
     event.preventDefault();
     const selectedMake = event.target.value;
     const response = await api.get(`/Model?MakeID=${selectedMake}`);
     this.setState({
-      models: response.data
+      models: response.data,
+      isLoading: false
     });
   };
 
   handleModelChange = async event => {
+    this.setState({ isLoading: true });
     event.preventDefault();
     const selectedModel = event.target.value;
     const response = await api.get(`/Version?ModelID=${selectedModel}`);
     this.setState({
-      versions: response.data
+      versions: response.data,
+      isLoading: false
     });
   };
 
   handleButtonSubmit = async event => {
+    this.setState({
+      allVehicles: [],
+      isLoading: true
+    });
     event.preventDefault();
     const response = await api.get(`/Vehicles?Page=1`);
     this.setState({
-      allVehicles: response.data
+      allVehicles: response.data,
+      isLoading: false
+    });
+  };
+
+  handleButtonPrevius = async event => {
+    this.setState({
+      allVehicles: [],
+      atualPage: this.state.atualPage - 1,
+      isLoading: true
+    });
+    event.preventDefault();
+    const response = await api.get(
+      `/Vehicles?Page=${this.state.atualPage - 1}`
+    );
+    this.setState({
+      allVehicles: response.data,
+      isLoading: false
+    });
+  };
+
+  handleButtonNext = async event => {
+    this.setState({
+      allVehicles: [],
+      atualPage: this.state.atualPage + 1,
+      isLoading: true
+    });
+    event.preventDefault();
+    const response = await api.get(
+      `/Vehicles?Page=${this.state.atualPage + 1}`
+    );
+    this.setState({
+      allVehicles: response.data,
+      isLoading: false
     });
   };
 
   render() {
+    const { isLoading, allVehicles, atualPage } = this.state;
     return (
       <>
+        <Loading isLoading={this.state.isLoading} />
         <Header />
         <Content>
           <CenterContent>
@@ -60,7 +116,7 @@ export default class Home extends Component {
                 <li>
                   <VehicleButton>
                     <span className="label">comprar</span>
-                    <span className="vehicle">Moto</span>
+                    <span className="vehicle">Carro</span>
                   </VehicleButton>
                 </li>
                 <li>
@@ -74,12 +130,14 @@ export default class Home extends Component {
             </HeaderBar>
             <FilterBar onSubmit={this.handleButtonSubmit}>
               <select name="make" onChange={this.handleMarkChange}>
+                {this.state.makes.map(item => (
+                  <option key={item.ID} value={item.ID}>
+                    {item.Name}
+                  </option>
+                ))}
                 <option value="" selected>
                   Marca
                 </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
               </select>
               <select name="model" onChange={this.handleModelChange}>
                 <option value="" selected>
@@ -150,6 +208,26 @@ export default class Home extends Component {
               </Car>
             ))}
           </ResultSearchGrid>
+          {allVehicles.length  ? (
+            <Pagination>
+              <button
+                disabled={atualPage == 1}
+                className="pagenation__button"
+                onClick={this.handleButtonPrevius}
+              >
+                Anterior
+              </button>
+              <span className="page__actual">{this.state.atualPage}</span>
+              <button
+                className="pagenation__button"
+                onClick={this.handleButtonNext}
+              >
+                Próximo
+              </button>
+            </Pagination>
+          ) : (
+            <p>Sem resultados</p>
+          )}
         </Content>
       </>
     );

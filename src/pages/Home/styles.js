@@ -12,6 +12,9 @@ export const Content = styled.div`
 
 export const CenterContent = styled.div`
   width: 993px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const HeaderBar = styled.div`
@@ -19,7 +22,10 @@ export const HeaderBar = styled.div`
   max-width: 100%;
   align-items: center;
   justify-content: space-between;
-
+  @media (max-width: 768px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   ul {
     padding: 0;
     margin: 0;
@@ -41,6 +47,12 @@ export const SellButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    padding: 6px;
+    font-size: 13px;
+    width: 120px;
+  }
+
   &:hover {
     background: #ff6e07;
     color: white;
@@ -57,6 +69,10 @@ export const VehicleButton = styled.button`
   border-bottom: 1px #afb7be solid;
   cursor: pointer;
   transition: all 0.2s;
+
+  @media (max-width: 768px) {
+    width: 110px;
+  }
 
   &:hover {
     border-bottom: 3px solid #dc3545;
@@ -79,6 +95,11 @@ export const VehicleButton = styled.button`
     font-size: 24px;
     display: block;
 
+    @media (max-width: 768px) {
+      background-size: 20px;
+      padding-left: 30px;
+      font-size: 18px;
+    }
     &.moto {
       background-image: url(${iconMoto});
     }
@@ -104,6 +125,11 @@ export const FilterBar = styled.form`
     &.versions {
       width: 300px;
     }
+
+    @media (max-width: 768px) {
+      border: 1px gray solid;
+      width: 100% !important;
+    }
   }
 `;
 
@@ -117,6 +143,10 @@ export const ViewOffersButton = styled.button`
   width: 200px;
   height: 36px;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+      width: 100% !important;
+    }
 `;
 
 export const ResultSearchGrid = styled.div`
@@ -125,6 +155,11 @@ export const ResultSearchGrid = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Car = styled.div`
@@ -177,6 +212,31 @@ export const Car = styled.div`
       max-width: 100%;
       height: 200px;
       object-fit: cover;
+    }
+  }
+`;
+
+
+export const Pagination = styled.div`
+  width: 300px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  button {
+    padding: 8px 25px;
+    cursor: pointer;
+    background: transparent;
+    color: #dc3545;
+    border: 1px #dc3545 solid;
+    border-radius: 3px;
+
+    &:disabled {
+      color: #aeaaaa;
+      border: 1px #aeaaaa solid;
+      cursor: not-allowed;
     }
   }
 `;
