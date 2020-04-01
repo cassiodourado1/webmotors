@@ -8,6 +8,10 @@ O que usei no desenvolvimento:
 *React;
 
 
+Para instalar as dependencias do projeto:
+
+### `yarn install`
+
 Para rodar o projeto:
 
 ### `yarn start`
