@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HeaderContent, Container } from './styles';
 import logo from '../../assets/img/webmotors.svg';
 
-export default class Header extends Component {
-  render() {
-    return(
-      <HeaderContent>
-        <Container>
-          <img src={logo} alt="logo" />
-        </Container>
-      </HeaderContent>
-    );
-  }
-}
+function Header() {
+  return (
+    <HeaderContent>
+      <Container>
+        <img src={logo} alt="logo" />
+      </Container>
+    </HeaderContent>
+  );
+};
+
+
+export default Header;

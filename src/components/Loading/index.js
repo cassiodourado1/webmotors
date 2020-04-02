@@ -1,30 +1,16 @@
-import React, { Component } from "react";
+import React from 'react';
 
-import { Container } from "./styles";
-
-// export default class Loading extends Component {
-//   render() {
-//     return (
-//       <Container>
-//         <div className="loading__text">carregando...</div>
-//       </Container>
-//     );
-//   }
-// }
-
+import { Container } from './styles';
 
 export default function Loading(props) {
-  const isLoading = props.isLoading;
+  const { isLoading } = props;
   return (
     <>
-      {isLoading &&
+      {isLoading && (
         <Container>
           <div className="loading__text">carregando...</div>
         </Container>
-      }
+      )}
     </>
   );
 }
-
-
-

@@ -12,7 +12,7 @@ export const Content = styled.div`
 
 export const CenterContent = styled.div`
   width: 993px;
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     width: 100%;
   }
 `;
@@ -22,7 +22,7 @@ export const HeaderBar = styled.div`
   max-width: 100%;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -49,7 +49,7 @@ export const SellButton = styled.a`
   cursor: pointer;
   text-decoration: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     padding: 6px;
     font-size: 13px;
     width: 120px;
@@ -72,7 +72,7 @@ export const VehicleButton = styled.button`
   cursor: pointer;
   transition: all 0.2s;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     width: 110px;
   }
 
@@ -97,7 +97,7 @@ export const VehicleButton = styled.button`
     font-size: 24px;
     display: block;
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       background-size: 20px;
       padding-left: 30px;
       font-size: 18px;
@@ -146,9 +146,9 @@ export const ViewOffersButton = styled.button`
   height: 36px;
   cursor: pointer;
 
-  @media (max-width: 768px) {
-      width: 100% !important;
-    }
+  @media (max-width: 992px) {
+    width: 100% !important;
+  }
 
   &:hover {
     background: #fff;
@@ -163,7 +163,7 @@ export const ResultSearchGrid = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -223,7 +223,6 @@ export const Car = styled.div`
     }
   }
 `;
-
 
 export const Pagination = styled.div`
   width: 300px;
