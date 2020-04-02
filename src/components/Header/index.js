@@ -10,7 +10,6 @@ function Header() {
       </Container>
     </HeaderContent>
   );
-};
-
+}
 
 export default Header;
