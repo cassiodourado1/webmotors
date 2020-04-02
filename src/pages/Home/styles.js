@@ -37,7 +37,8 @@ export const HeaderBar = styled.div`
   }
 `;
 
-export const SellButton = styled.button`
+export const SellButton = styled.a`
+  display: block;
   background: transparent;
   color: #ff6e07;
   font-weight: bold;
@@ -46,6 +47,7 @@ export const SellButton = styled.button`
   padding: 12px 28px;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
 
   @media (max-width: 768px) {
     padding: 6px;

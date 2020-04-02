@@ -126,7 +126,7 @@ export default class Home extends Component {
                   </VehicleButton>
                 </li>
               </ul>
-              <SellButton>Vender meu car</SellButton>
+              <SellButton href="https://www.webmotors.com.br/vender/?idcmpint=t1:c17:m07:webmotors:na-webmotors:posicao-2::venda-seu-veiculo">Venda seu carro</SellButton>
             </HeaderBar>
             <FilterBar onSubmit={this.handleButtonSubmit}>
               <select name="make" onChange={this.handleMarkChange}>
@@ -202,7 +202,7 @@ export default class Home extends Component {
                   <p className="price">{`R$${item.Price}`}</p>
                   <div className="info__footer">
                     <span className="year">{item.YearModel}</span>
-                    <span className="km">{item.KM}</span>
+                    <span className="km">{`${item.KM}Km`}</span>
                   </div>
                 </div>
               </Car>
