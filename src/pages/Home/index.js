@@ -193,7 +193,7 @@ export default class Home extends Component {
           </CenterContent>
 
           <ResultSearchGrid>
-            {this.state.allVehicles.map((item) => (
+            {allVehicles.map((item) => (
               <Car key={item.ID}>
                 <div className="car__image">
                   <img src={item.Image} alt={item.Model} />
@@ -213,14 +213,16 @@ export default class Home extends Component {
           {allVehicles.length ? (
             <Pagination>
               <button
-                disabled={atualPage == 1}
+                type="button"
+                disabled={atualPage === 1}
                 className="pagenation__button"
                 onClick={this.handleButtonPrevius}
               >
                 Anterior
               </button>
-              <span className="page__actual">{this.state.atualPage}</span>
+              <span className="page__actual">{atualPage}</span>
               <button
+                type="button"
                 className="pagenation__button"
                 onClick={this.handleButtonNext}
               >
