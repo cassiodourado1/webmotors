@@ -175,6 +175,7 @@ export const Car = styled.div`
   display: flex;
   flex-flow: column;
   width: 300px;
+  height: 370px;
   background: #fff;
   border-radius: 10px;
   margin-bottom: 30px;

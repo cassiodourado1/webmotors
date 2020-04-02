@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Header from "../../components/Header";
-import Loading from "../../components/Loading";
-import api from "../../api";
+import React, { Component } from 'react';
+import Header from '../../components/Header';
+import Loading from '../../components/Loading';
+import api from '../../api';
 import {
   Content,
   CenterContent,
@@ -13,7 +13,7 @@ import {
   ResultSearchGrid,
   Car,
   Pagination,
-} from "./styles";
+} from './styles';
 
 export default class Home extends Component {
   state = {
@@ -104,7 +104,14 @@ export default class Home extends Component {
   };
 
   render() {
-    const { isLoading, allVehicles, atualPage, makes, models, versions } = this.state;
+    const {
+      isLoading,
+      allVehicles,
+      atualPage,
+      makes,
+      models,
+      versions,
+    } = this.state;
     return (
       <>
         <Loading isLoading={isLoading} />
@@ -120,7 +127,7 @@ export default class Home extends Component {
                   </VehicleButton>
                 </li>
                 <li>
-                  <VehicleButton>
+                  <VehicleButton disabled>
                     <span className="label">comprar</span>
                     <span className="vehicle moto">Moto</span>
                   </VehicleButton>
@@ -210,7 +217,7 @@ export default class Home extends Component {
               </Car>
             ))}
           </ResultSearchGrid>
-          {allVehicles.length ? (
+          {allVehicles.length !== 0 ? (
             <Pagination>
               <button
                 type="button"
@@ -223,6 +230,7 @@ export default class Home extends Component {
               <span className="page__actual">{atualPage}</span>
               <button
                 type="button"
+                disabled={allVehicles.length === 1}
                 className="pagenation__button"
                 onClick={this.handleButtonNext}
               >
