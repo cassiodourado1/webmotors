@@ -12,7 +12,7 @@ import {
   ViewOffersButton,
   ResultSearchGrid,
   Car,
-  Pagination
+  Pagination,
 } from "./styles";
 
 export default class Home extends Component {
@@ -24,7 +24,7 @@ export default class Home extends Component {
     year: [],
     price: [],
     atualPage: 1,
-    isLoading: false
+    isLoading: false,
   };
 
   async componentDidMount() {
@@ -32,50 +32,50 @@ export default class Home extends Component {
     const response = await api.get(`/Make`);
     this.setState({
       makes: response.data,
-      isLoading: false
+      isLoading: false,
     });
   }
 
-  handleMarkChange = async event => {
+  handleMarkChange = async (event) => {
     this.setState({ isLoading: true });
     event.preventDefault();
     const selectedMake = event.target.value;
     const response = await api.get(`/Model?MakeID=${selectedMake}`);
     this.setState({
       models: response.data,
-      isLoading: false
+      isLoading: false,
     });
   };
 
-  handleModelChange = async event => {
+  handleModelChange = async (event) => {
     this.setState({ isLoading: true });
     event.preventDefault();
     const selectedModel = event.target.value;
     const response = await api.get(`/Version?ModelID=${selectedModel}`);
     this.setState({
       versions: response.data,
-      isLoading: false
+      isLoading: false,
     });
   };
 
-  handleButtonSubmit = async event => {
+  handleButtonSubmit = async (event) => {
     this.setState({
       allVehicles: [],
-      isLoading: true
+      isLoading: true,
     });
     event.preventDefault();
     const response = await api.get(`/Vehicles?Page=1`);
     this.setState({
       allVehicles: response.data,
-      isLoading: false
+      isLoading: false,
     });
   };
 
-  handleButtonPrevius = async event => {
+  handleButtonPrevius = async (event) => {
     this.setState({
       allVehicles: [],
       atualPage: this.state.atualPage - 1,
-      isLoading: true
+      isLoading: true,
     });
     event.preventDefault();
     const response = await api.get(
@@ -83,15 +83,15 @@ export default class Home extends Component {
     );
     this.setState({
       allVehicles: response.data,
-      isLoading: false
+      isLoading: false,
     });
   };
 
-  handleButtonNext = async event => {
+  handleButtonNext = async (event) => {
     this.setState({
       allVehicles: [],
       atualPage: this.state.atualPage + 1,
-      isLoading: true
+      isLoading: true,
     });
     event.preventDefault();
     const response = await api.get(
@@ -99,15 +99,15 @@ export default class Home extends Component {
     );
     this.setState({
       allVehicles: response.data,
-      isLoading: false
+      isLoading: false,
     });
   };
 
   render() {
-    const { isLoading, allVehicles, atualPage } = this.state;
+    const { isLoading, allVehicles, atualPage, makes, models, versions } = this.state;
     return (
       <>
-        <Loading isLoading={this.state.isLoading} />
+        <Loading isLoading={isLoading} />
         <Header />
         <Content>
           <CenterContent>
@@ -126,11 +126,13 @@ export default class Home extends Component {
                   </VehicleButton>
                 </li>
               </ul>
-              <SellButton href="https://www.webmotors.com.br/vender/?idcmpint=t1:c17:m07:webmotors:na-webmotors:posicao-2::venda-seu-veiculo">Venda seu carro</SellButton>
+              <SellButton href="https://www.webmotors.com.br/vender/?idcmpint=t1:c17:m07:webmotors:na-webmotors:posicao-2::venda-seu-veiculo">
+                Venda seu carro
+              </SellButton>
             </HeaderBar>
             <FilterBar onSubmit={this.handleButtonSubmit}>
               <select name="make" onChange={this.handleMarkChange}>
-                {this.state.makes.map(item => (
+                {makes.map((item) => (
                   <option key={item.ID} value={item.ID}>
                     {item.Name}
                   </option>
@@ -143,7 +145,7 @@ export default class Home extends Component {
                 <option value="" selected>
                   Modelo
                 </option>
-                {this.state.models.map(item => (
+                {models.map((item) => (
                   <option key={item.ID} value={item.ID}>
                     {item.Name}
                   </option>
@@ -176,7 +178,7 @@ export default class Home extends Component {
                 <option value="3">3</option>
               </select>
               <select className="versions" name="version" onChange={() => {}}>
-                {this.state.versions.map(item => (
+                {versions.map((item) => (
                   <option key={item.ID} value={item.ID}>
                     {item.Name}
                   </option>
@@ -191,7 +193,7 @@ export default class Home extends Component {
           </CenterContent>
 
           <ResultSearchGrid>
-            {this.state.allVehicles.map(item => (
+            {this.state.allVehicles.map((item) => (
               <Car key={item.ID}>
                 <div className="car__image">
                   <img src={item.Image} alt={item.Model} />
@@ -208,7 +210,7 @@ export default class Home extends Component {
               </Car>
             ))}
           </ResultSearchGrid>
-          {allVehicles.length  ? (
+          {allVehicles.length ? (
             <Pagination>
               <button
                 disabled={atualPage == 1}

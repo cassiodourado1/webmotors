@@ -68,7 +68,7 @@ export const VehicleButton = styled.button`
   background: transparent;
   text-transform: uppercase;
   width: 150px;
-  border-bottom: 1px #afb7be solid;
+  border-bottom: 3px #afb7be solid;
   cursor: pointer;
   transition: all 0.2s;
 
@@ -149,6 +149,12 @@ export const ViewOffersButton = styled.button`
   @media (max-width: 768px) {
       width: 100% !important;
     }
+
+  &:hover {
+    background: #fff;
+    color: #dc3545;
+    border: 1px #dc3545 solid;
+  }
 `;
 
 export const ResultSearchGrid = styled.div`
